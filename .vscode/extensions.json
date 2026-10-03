@@ -1,8 +1,13 @@
 {
   "recommendations": [
+    "ms-ceintl.vscode-language-pack-ko",
+    "k--kato.intellij-idea-keybindings",
     "ms-python.python",
+    "ms-python.debugpy",
     "ms-python.vscode-pylance",
     "ms-toolsai.jupyter",
-    "ms-vscode-remote.remote-wsl"
+    "charliermarsh.ruff",
+    "ms-vscode-remote.remote-wsl",
+    "GitHub.vscode-pull-request-github"
   ]
 }

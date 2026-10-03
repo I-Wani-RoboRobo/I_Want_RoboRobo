@@ -6,7 +6,9 @@ Robot Learning Lab
 
 ## 현재 상태
 
-프로젝트 초기 구조를 준비했습니다. 모델 학습, 시뮬레이션 실행, 서빙 및 ROS 2 연동은 아직 구현되지 않았습니다.
+Windows에서 Python 3.12와 GPU 학습 환경을 준비했습니다. RTX 3060에서 작은 모델의 계산·역전파, MuJoCo 물리 계산·RGB 렌더링, Panda 집기 환경 초기화·한 단계 실행, 영상 디코딩 검사를 통과했습니다.
+
+시연 수집, ACT 모델 학습, 집기 성공률 평가, 추론 서비스와 ROS 2 연동은 아직 구현되지 않았습니다.
 
 ## 목표
 
@@ -23,14 +25,16 @@ Robot Learning Lab
 
 자세한 단계와 완료 기준은 [로드맵](docs/ROADMAP.md)을 참고하세요.
 
-## 기술 후보
+## 개발 환경
 
-- Python, PyTorch
-- LeRobot / ACT
-- MuJoCo 기반 시뮬레이션
-- ROS 2
+- Python 3.12.15 / uv / 프로젝트 전용 `.venv`
+- PyTorch 2.11.0 + CUDA 12.8 / torchvision 0.26.0
+- LeRobot 0.6.1 / ACT
+- MuJoCo 3.8.1 / Gymnasium 1.3.0 / gym-hil 0.1.14
+- Jupyter / Ruff / pytest / FastAPI / Uvicorn
+- ROS 2는 추후 연동 단계에서 설치합니다.
 
-패키지 버전과 실행 환경은 첫 시뮬레이션 재현 후 고정합니다.
+직접 의존성은 `pyproject.toml`, 해결된 버전은 `uv.lock`에 기록했습니다. 자세한 설치 목록과 실행법은 [환경 설정](docs/SETUP.md)을 참고하세요.
 
 ## 폴더 구성
 
@@ -45,9 +49,23 @@ src/robot_learning_lab/   프로젝트 코드
 
 ## 시작하기
 
-현재 단계에서는 실행 가능한 학습 코드가 없습니다. 다음 작업은 Python/Linux 개발 환경 확인, 시뮬레이터 실행, 시연 에피소드 하나 저장입니다.
+현재 단계에서는 실행 가능한 환경 검사 코드가 있습니다. 첫 시연 에피소드 저장과 실제 학습 코드가 다음 작업입니다.
 
-VS Code에서 이 폴더를 열고 추천 확장을 확인할 수 있습니다. Python 확장 설치와 Python 실행 환경 설치는 별도 작업입니다.
+Windows PowerShell에서 프로젝트 폴더로 이동한 뒤, 만들어 둔 가상환경으로 실행합니다.
+
+```powershell
+./.venv/Scripts/python.exe scripts/check_environment.py
+```
+
+이 PC에서는 MuJoCo의 한글 경로 문제를 피하기 위해 같은 프로젝트를 가리키는 영문 연결 경로 `~/Projects/I_Want_RoboRobo`를 사용합니다. 새 PC의 설치 절차와 차이는 [환경 설정](docs/SETUP.md)을 확인하세요.
+
+## 공부 자료
+
+- [개발 환경 학습 가이드 PDF](output/pdf/robot_learning_environment_guide_ko.pdf): 도구의 역할, 용어, GPU 실습, 8주 공부 계획, 설치 버전과 전체 패키지 목록
+- [개발 환경 학습 가이드 텍스트](docs/ENVIRONMENT_GUIDE.md)
+- [아이패드 VS Code 웹에서 저장소 열기](https://vscode.dev/github/I-Wani-RoboRobo/I_Want_RoboRobo)
+
+VS Code 웹은 코드·문서 편집용입니다. 데스크톱의 GPU와 가상환경을 자동으로 사용하지 않습니다.
 
 ## 참고 자료
 
@@ -55,4 +73,4 @@ VS Code에서 이 폴더를 열고 추천 확장을 확인할 수 있습니다. 
 - [ACT 모델 안내](https://huggingface.co/docs/lerobot/main/act)
 - [LeRobot 비동기 추론](https://huggingface.co/docs/lerobot/main/async)
 
-참고 문서의 main 버전과 실제 설치 버전이 일치하는지 환경 구성 시 확인합니다.
+참고 문서의 main 버전과 실제 설치 버전이 일치하는지 확인합니다.
