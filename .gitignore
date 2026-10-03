@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# Environments and credentials
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+credentials.json
+secrets*.json
+
+# Data and generated artifacts
+data/
+datasets/
+checkpoints/
+outputs/
+runs/
+wandb/
+mlruns/
+logs/
+*.log
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.bag
+*.mcap
+
+# Editors and OS
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
